@@ -1,9 +1,19 @@
 <template>
-  <div class="timer-container" v-show="show">
-    <div class="timer-container-flex">
-      <div class="timer-flex">
-        <div class="timer-limited">LIMITED TIME OFFER!</div>
-        <div v-html="timer"></div>
+  <div>
+    <div class="timer-container" v-show="show">
+      <div class="timer-container-flex">
+        <div class="timer-flex">
+          <div class="timer-limited">LIMITED TIME OFFER!</div>
+          <div v-html="timer"></div>
+        </div>
+      </div>
+    </div>
+    <div class="timer-dummy" v-show="show">
+      <div class="timer-container-flex">
+        <div class="timer-flex">
+          <div class="timer-limited">LIMITED TIME OFFER!</div>
+          <div v-html="timer"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -58,20 +68,28 @@
 </script>
 
 <style>
-  .timer-container {
-    position: sticky;
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -ms-sticky;
-    position: -o-sticky;
+  .timer-dummy {
+    /*position: absolute;*/
     top: 0;
     width: 100%;
     font-family: SansSerif, sans-serif;
     text-align: center;
     /*font-size: 16px;*/
-    background-color: #fdf3eafc;
+    background-color: rgba(253, 243, 234, 0.99);
     padding-top: 1em;
     padding-bottom: 1em;
+  }
+  .timer-container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-family: SansSerif, sans-serif;
+    text-align: center;
+    /*font-size: 16px;*/
+    background-color: rgb(253, 243, 234);
+    padding-top: 1em;
+    padding-bottom: 1em;
+    z-index: 8;
   }
   .timer-limited {
     color: red;
