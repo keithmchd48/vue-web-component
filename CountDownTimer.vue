@@ -77,6 +77,9 @@
     padding-top: 1em;
     padding-bottom: 1em;
   }
+  .timer-dummy {
+    visibility: hidden;
+  }
   .timer-container {
     position: fixed;
     z-index: 8;
