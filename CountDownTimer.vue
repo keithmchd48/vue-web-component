@@ -68,27 +68,17 @@
 </script>
 
 <style>
-  .timer-dummy {
-    /*position: absolute;*/
+  .timer-dummy, .timer-container {
     top: 0;
     width: 100%;
     font-family: SansSerif, sans-serif;
     text-align: center;
-    /*font-size: 16px;*/
-    background-color: rgba(253, 243, 234, 0.99);
+    background-color: #ffeedf;
     padding-top: 1em;
     padding-bottom: 1em;
   }
   .timer-container {
     position: fixed;
-    top: 0;
-    width: 100%;
-    font-family: SansSerif, sans-serif;
-    text-align: center;
-    /*font-size: 16px;*/
-    background-color: rgb(253, 243, 234);
-    padding-top: 1em;
-    padding-bottom: 1em;
     z-index: 8;
   }
   .timer-limited {
