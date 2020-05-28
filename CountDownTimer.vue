@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="timer-container" v-show="show">
+  <transition-group name="slide" tag="div">
+    <div key="1" class="timer-container" v-if="show">
       <div class="timer-container-flex">
         <div class="timer-flex">
           <div class="timer-limited">LIMITED TIME OFFER!</div>
@@ -8,7 +8,7 @@
         </div>
       </div>
     </div>
-    <div class="timer-dummy" v-show="show">
+    <div key="2" class="timer-dummy" v-if="show">
       <div class="timer-container-flex">
         <div class="timer-flex">
           <div class="timer-limited">LIMITED TIME OFFER!</div>
@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </transition-group>
 </template>
 
 <script>
@@ -68,6 +68,13 @@
 </script>
 
 <style>
+/* Timer bar slides in from top */
+  .slide-enter {
+    transform: translateY(-100%);
+  }
+  .slide-enter-active {
+    transition: transform 1s;
+  }
   .timer-dummy, .timer-container {
     top: 0;
     width: 100%;
