@@ -1,5 +1,5 @@
 # vue-web-component
-An independent Vue web component that can be plugged into any website. It is a count-down timer that shows the time remaining until the midnight of the current day.
+An independent Vue web component that can be plugged into any website. It is a count-down timer that shows the time remaining until the datetime provided as props.
 
 ## Steps to get started
 

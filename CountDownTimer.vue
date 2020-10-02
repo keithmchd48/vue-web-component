@@ -23,6 +23,19 @@
   import moment from 'moment/moment'
   export default {
     name: 'CountDownTimer',
+    props: {
+      // date format should be in 'YYYY-MM-DD, h:mm:ss a' (eg. 2020-10-02, 10:45:00 pm)
+      dateUntil: {
+        type: String,
+        default: ''
+      }
+    },
+    computed: {
+      countdown () {
+        // if "this.dateUntil" is not a valid date, then consider the default date as today's midnight
+        return moment(this.dateUntil, 'YYYY-MM-DD, h:mm:ss a').valueOf() || moment().endOf('day').valueOf()
+      }
+    },
     data () {
       return {
         // the time left to be displayed in template in days, hours, mins, seconds
@@ -30,7 +43,7 @@
         // setInterval() object will be stored in this variable
         timerInterval: null,
         // countdown: moment().endOf('day').valueOf(),
-        countdown: moment('2020-10-02, 2:11:00 pm', 'YYYY-MM-DD, h:mm:ss a').valueOf(),
+        // countdown: moment('2020-10-02, 2:11:00 pm', 'YYYY-MM-DD, h:mm:ss a').valueOf(),
         show: false
       }
     },
