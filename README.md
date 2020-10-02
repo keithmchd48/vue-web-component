@@ -4,7 +4,8 @@ An independent Vue web component that can be plugged into any website. It is a c
 ## Steps to get started
 
 1. npm install -g @vue/cli-service-global
-2. vue serve CountDownTimer.vue (Make sure you are in the right directory)
+2. npm install --save moment
+3. vue serve Home.vue (Make sure you are in the right directory)
 
 ## To build the dist directory
 1. vue build CountDownTimer.vue --target wc --name countdown-timer

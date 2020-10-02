@@ -25,20 +25,25 @@
     name: 'CountDownTimer',
     data () {
       return {
+        // the time left to be displayed in template in days, hours, mins, seconds
         timer: 0,
+        // setInterval() object will be stored in this variable
         timerInterval: null,
-        countdown: moment().endOf('day').valueOf(),
+        // countdown: moment().endOf('day').valueOf(),
+        countdown: moment('2020-10-02, 2:11:00 pm', 'YYYY-MM-DD, h:mm:ss a').valueOf(),
         show: false
       }
     },
     mounted() {
       window.addEventListener('scroll', this.scrollListener)
+      // trigger setInterval()
       this.startTimer()
     },
     methods: {
       scrollListener () {
         if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) this.show = true
       },
+      // run this method every 1 seconds through setInterval()
       runTimer() {
         let now = new Date().getTime()
         let distance = this.countdown - now
@@ -46,16 +51,18 @@
         let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        if (distance <= 0) {
+          this.onTimesUp()
+          return
+        }
         function pad(n) {
           return (n < 10 ? "0" + n : n);
         }
         this.timer = `<div class="timer-expire"><span>Expires in: <span class="timer-num">${days}</span> days <span class="timer-num">${pad(hours)}</span> hours <span class="timer-num">${pad(minutes)}</span> min <span class="timer-num">${pad(seconds)}</span> sec</span></div>`
-
-        if (this.distance < 0) {
-          this.onTimesUp()
-        }
       },
+      // when the time left is 0 seconds or less, call this method
       onTimesUp() {
+        this.timer = `<div class="timer-expire"><span>Expires in: <span class="timer-num">00</span> days <span class="timer-num">00</span> hours <span class="timer-num">00</span> min <span class="timer-num">00</span> sec</span></div>`
         clearInterval(this.timerInterval);
       },
       startTimer() {
@@ -73,7 +80,7 @@
     transform: translateY(-100%);
   }
   .slide-enter-active {
-    transition: transform 1s;
+    transition: transform 0.5s;
   }
   .timer-dummy, .timer-container {
     top: 0;
